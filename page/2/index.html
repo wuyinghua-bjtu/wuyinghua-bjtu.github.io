@@ -1,0 +1,1955 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>CCFE技术博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="CCFE技术博客">
+<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:site_name" content="CCFE技术博客">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="CCFE技术博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">CCFE技术博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-ccfe-doc/2022/07/20/CCOS-Console组件代码合入流程V1/index" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/08/09/ccfe-doc/2022/07/20/CCOS-Console%E7%BB%84%E4%BB%B6%E4%BB%A3%E7%A0%81%E5%90%88%E5%85%A5%E6%B5%81%E7%A8%8BV1/index/" class="article-date">
+  <time class="dt-published" datetime="2022-08-09T08:43:50.275Z" itemprop="datePublished">2022-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>CCFE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Console组件修改代码合入流程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CCFE">
+<meta property="og:url" content="http://example.com/2022/07/20/CCOS-Console%E7%BB%84%E4%BB%B6%E4%BB%A3%E7%A0%81%E5%90%88%E5%85%A5%E6%B5%81%E7%A8%8BV1/index.html">
+<meta property="og:site_name" content="CCFE">
+<meta property="og:description" content="Console组件修改代码合入流程">
+<meta property="og:locale">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/174108/1655964320060-fdd93850-bbf2-400e-bb7f-63d7ff242f94.jpeg">
+<meta property="article:published_time" content="2022-07-20T00:15:05.430Z">
+<meta property="article:modified_time" content="2022-07-20T00:15:05.439Z">
+<meta property="article:author" content="CCFE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/174108/1655964320060-fdd93850-bbf2-400e-bb7f-63d7ff242f94.jpeg">
+  
+    <link rel="alternate" href="/atom.xml" title="CCFE" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">CCFE</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-CCOS-Console组件代码合入流程V1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/07/20/CCOS-Console%E7%BB%84%E4%BB%B6%E4%BB%A3%E7%A0%81%E5%90%88%E5%85%A5%E6%B5%81%E7%A8%8BV1/" class="article-date">
+  <time class="dt-published" datetime="2022-07-20T00:15:05.430Z" itemprop="datePublished">2022-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Console组件修改代码合入流程"><a href="#Console组件修改代码合入流程" class="headerlink" title="Console组件修改代码合入流程"></a>Console组件修改代码合入流程</h2><p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/174108/1655964320060-fdd93850-bbf2-400e-bb7f-63d7ff242f94.jpeg"></p>
+<h2 id><a href="#" class="headerlink" title></a></h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/07/20/CCOS-Console%E7%BB%84%E4%BB%B6%E4%BB%A3%E7%A0%81%E5%90%88%E5%85%A5%E6%B5%81%E7%A8%8BV1/" data-id="cl5t0cxc00000ph0mfakh4ume" data-title="" class="article-share-link">Teilen</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/07/20/CCOS%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83V0.5.1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/07/19/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/07/20/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA/">测试图片显示</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/20/CCOS%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83V0.5.1/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/20/CCOS-Console%E7%BB%84%E4%BB%B6%E4%BB%A3%E7%A0%81%E5%90%88%E5%85%A5%E6%B5%81%E7%A8%8BV1/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/19/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 CCFE<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/08/09/ccfe-doc/2022/07/20/CCOS-Console%E7%BB%84%E4%BB%B6%E4%BB%A3%E7%A0%81%E5%90%88%E5%85%A5%E6%B5%81%E7%A8%8BV1/index/" data-id="cl6lxrjfy000eur5wdiqm306f" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ccfe-doc/2022/07/20/CCOS控制台前端开发规范V0.5.1/index" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/08/09/ccfe-doc/2022/07/20/CCOS%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83V0.5.1/index/" class="article-date">
+  <time class="dt-published" datetime="2022-08-09T08:43:50.275Z" itemprop="datePublished">2022-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>CCFE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="修订记录   序号 修订内容 修订人 批准人 修订时间 版本 备注    1 提交第一版开发者规范提交 张正基  2022.04.26 V0.1    2 根据2022年5月10号汇报Console组件打包构建（CICD）方案的意见修订 张正基  2022.05.11 V0.2    3 根据2022年5月12号汇报Console组件多主题支持方案的意见修订 张正基  2022.05.13 V0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CCFE">
+<meta property="og:url" content="http://example.com/2022/07/20/CCOS%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83V0.5.1/index.html">
+<meta property="og:site_name" content="CCFE">
+<meta property="og:description" content="修订记录   序号 修订内容 修订人 批准人 修订时间 版本 备注    1 提交第一版开发者规范提交 张正基  2022.04.26 V0.1    2 根据2022年5月10号汇报Console组件打包构建（CICD）方案的意见修订 张正基  2022.05.11 V0.2    3 根据2022年5月12号汇报Console组件多主题支持方案的意见修订 张正基  2022.05.13 V0">
+<meta property="og:locale">
+<meta property="og:image" content="http://example.com/images/menu.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u8ba3acf4&margin=%5Bobject%20Object%5D&originHeight=988&originWidth=1274&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u64caaa45-af79-4a8b-bb6c-fb6a6477df8&title=">
+<meta property="og:image" content="http://example.com/images/menu.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u8ba3acf4&margin=%5Bobject%20Object%5D&originHeight=988&originWidth=1274&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u64caaa45-af79-4a8b-bb6c-fb6a6477df8&title=">
+<meta property="og:image" content="http://example.com/images/filetree.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u47325092&margin=%5Bobject%20Object%5D&originHeight=781&originWidth=1286&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u2b329d55-6b2f-4116-adcb-7b724ff4d17&title=">
+<meta property="og:image" content="http://example.com/images/integration-tests.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=ud3656458&margin=%5Bobject%20Object%5D&originHeight=1478&originWidth=1078&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u0a3c99ba-1c5c-4da0-bcdc-30b57785958&title=">
+<meta property="og:image" content="http://example.com/images/cicd.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u8f27915d&margin=%5Bobject%20Object%5D&originHeight=702&originWidth=2500&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u603a8df8-764f-41ee-9257-fd69c8d4d1f&title=">
+<meta property="og:image" content="http://example.com/images/workflow.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u02d4b1c6&margin=%5Bobject%20Object%5D&originHeight=550&originWidth=1033&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=ufc933069-c41c-4354-a39c-42132550a1e&title=">
+<meta property="og:image" content="http://example.com/images/workflow2.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=ub1b00da7&margin=%5Bobject%20Object%5D&originHeight=3181&originWidth=2402&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=ud244b4b5-b754-4e71-812b-89598699334&title=">
+<meta property="og:image" content="http://example.com/images/protractor.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u536728a6&margin=%5Bobject%20Object%5D&originHeight=1376&originWidth=1846&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=ue4ae078e-fb5a-4400-9211-3a22eeb6158&title=">
+<meta property="og:image" content="http://example.com/images/test-ci.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=ue9a7d527&margin=%5Bobject%20Object%5D&originHeight=1788&originWidth=3564&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u05ff8ee6-06b3-4e32-8864-49121d1467e&title=">
+<meta property="og:image" content="http://example.com/images/cdp.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u32d5bbf4&margin=%5Bobject%20Object%5D&originHeight=705&originWidth=1280&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=ucd41f397-554f-4ab4-bb53-d972e19f70c&title=">
+<meta property="og:image" content="http://example.com/images/script-debug.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u6f9ad5f8&margin=%5Bobject%20Object%5D&originHeight=1354&originWidth=1834&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u475562ca-a68d-4117-848e-feb1c3e482e&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/174108/1656752109843-4347c885-5167-48e5-8b78-5bd7424d3bd6.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=uae9681ab&margin=%5Bobject%20Object%5D&originHeight=400&originWidth=1374&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=uc878b8f6-ac8d-43c2-9556-f4a09f33831&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/174108/1656752109870-4cd75cdc-416c-4243-a9d4-861ce9ff611b.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u666c9489&margin=%5Bobject%20Object%5D&originHeight=731&originWidth=1510&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u174b5ecb-0395-4709-94f1-69845b90323&title=">
+<meta property="article:published_time" content="2022-07-20T01:45:49.457Z">
+<meta property="article:modified_time" content="2022-07-20T01:45:49.477Z">
+<meta property="article:author" content="CCFE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/menu.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u8ba3acf4&margin=%5Bobject%20Object%5D&originHeight=988&originWidth=1274&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u64caaa45-af79-4a8b-bb6c-fb6a6477df8&title=">
+  
+    <link rel="alternate" href="/atom.xml" title="CCFE" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">CCFE</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-CCOS控制台前端开发规范V0.5.1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/07/20/CCOS%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83V0.5.1/" class="article-date">
+  <time class="dt-published" datetime="2022-07-20T01:45:49.457Z" itemprop="datePublished">2022-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a name="zSQ1Z"></a></p>
+<h1 id="修订记录"><a href="#修订记录" class="headerlink" title="修订记录"></a>修订记录</h1><table>
+<thead>
+<tr>
+<th><strong>序号</strong></th>
+<th><strong>修订内容</strong></th>
+<th><strong>修订人</strong></th>
+<th><strong>批准人</strong></th>
+<th><strong>修订时间</strong></th>
+<th><strong>版本</strong></th>
+<th><strong>备注</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>提交第一版开发者规范提交</td>
+<td>张正基</td>
+<td></td>
+<td>2022.04.26</td>
+<td>V0.1</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>根据2022年5月10号汇报Console组件打包构建（CICD）方案的意见修订</td>
+<td>张正基</td>
+<td></td>
+<td>2022.05.11</td>
+<td>V0.2</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>根据2022年5月12号汇报Console组件多主题支持方案的意见修订</td>
+<td>张正基</td>
+<td></td>
+<td>2022.05.13</td>
+<td>V0.3</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>根据2022年5月16号汇报Console的意见修订</td>
+<td>张正基</td>
+<td></td>
+<td></td>
+<td>V0.4</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>根据2022年5月19号汇报Console的意见修订：开发管理策略；</td>
+<td>张正基</td>
+<td>阮运</td>
+<td>2022.05.26</td>
+<td>V0.5</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>根据2022年6月支持CeaKE、CeaStor开发实践反馈的修订</td>
+<td>张正基</td>
+<td></td>
+<td>2022.06.30</td>
+<td>V0.5.1</td>
+<td></td>
+</tr>
+</tbody></table>
+<p><a name="T1Uq1"></a></p>
+<h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><p><a name="HZZs5"></a></p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p> CCOS架构的基本结构是由140多个组件根据一定的逻辑架构组成而成的一组功能模块集，构建时根据产品打包配置清单而选取功能模块全集的一个子集打包成为一个产品，依据不同的产品配置清单打包成为不同的产品形态，CeaKE、CeaStor、CeaSphere、CeaCube等产品均由此架构平台构建而成。 </p>
+<p><a name="srlZQ"></a></p>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p> 本规范是前端开发工程师在CCOS架构Console组件的前端相关开发与交付过程中应遵循的开发规范，以维护CCOS Console组件的灵活性、可维护性、可扩展性；有效避免各产品在个性化UI需求旺盛的背景下各产品版本过多、不兼容形成巨大的定制人力成本，在此基础上保障产品质量、同时提高团队协作效率。 </p>
+<p><a name="iFxAg"></a></p>
+<h2 id="项目范围"><a href="#项目范围" class="headerlink" title="项目范围"></a>项目范围</h2><p> Console组件是CCOS的控制台组件，作为上述CCOS架构下众多组件之一，是CCOS架构主UI组件，也是本规范主要的约束组件项目实体。 </p>
+<p><a name="ETQHX"></a></p>
+<h2 id="角色范围"><a href="#角色范围" class="headerlink" title="角色范围"></a>角色范围</h2><p>本规范约束的目标群体是在CCOS架构的以下组件中提交代码的提交前端代码的开发人员： </p>
+<ul>
+<li>Console框架组件(托管在<code>https://code.cestc.cn/ccos/console</code>仓库)</li>
+<li>Console模块组件（托管在<code>https://code.cestc.cn/ccos/console-module</code>仓库下的所有前端模块）</li>
+</ul>
+<p><a name="VXtYw"></a></p>
+<h2 id="规范约束关系"><a href="#规范约束关系" class="headerlink" title="规范约束关系"></a>规范约束关系</h2><p>本规范受《软件开发配置管理规范》约束；<br>本规范的目标组件为console组件，与console组件配套的console-oprator组件应遵守《<a target="_blank" rel="noopener" href="https://code.cestc.cn/ccos/ccos-design/-/blob/master/designs/CCOS/%E4%BA%A7%E5%93%81Operator%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83.md">产品Operator设计规范》</a>约束；<br>本规范引用了<a target="_blank" rel="noopener" href="https://code.cestc.cn/ccos/ccos-design/-/blob/zhangzhengji/designs/UI-FE/CCOS%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81CommitLog%E8%A7%84%E8%8C%83V1.md">《CCOS前端代码CommitLog规范V1》</a><br>本规范引用了<a target="_blank" rel="noopener" href="https://wiki.cestc.cn/pages/viewpage.action?pageId=146635112">《CCFE需求处理工作流规范 For UED&amp;前端1.0》</a><br>以下CCOS前端新手指引为本规范附件：《<a target="_blank" rel="noopener" href="https://c3yomn2yko.feishu.cn/docs/doccncnbHj9mVrjtBQ7AtROLDYd">CCOS架构控制台组件前端开发新手指引V1</a> 》<br>以下CCOS前端模块开发最佳实践遵循本规范：《<a target="_blank" rel="noopener" href="https://code.cestc.cn/ccos/ccos-design/-/blob/master/operator%E8%AE%BE%E8%AE%A1/00-%E8%A7%84%E8%8C%83/%E5%89%8D%E7%AB%AF%E8%A7%84%E8%8C%83/CCOS%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E4%B8%80%E4%B8%AA%E4%B8%9A%E5%8A%A1%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AA%E4%B8%9A%E5%8A%A1%E6%A8%A1%E5%9D%97-%E9%9D%99%E6%80%81%E6%8F%92%E4%BB%B6.md">从0开始开发一个前端模块组件</a>》</p>
+<p><a name="VgSkV"></a></p>
+<h2 id="术语表"><a href="#术语表" class="headerlink" title="术语表"></a>术语表</h2><table>
+<thead>
+<tr>
+<th>名词</th>
+<th>解释</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Console框架组件</td>
+<td>控制台主工程，代码仓库地址为<code>https://code.cestc.cn/ccos/console</code>，其中<code>frontend</code>目录是CCOS架构中各产品前端编码的主要工作区</td>
+<td></td>
+</tr>
+<tr>
+<td>Console模块组件</td>
+<td>在Console组件中，以功能模块的颗粒度来组织代码，定义一个常规的前端功能模块按照如下特征： <ul><li>在UI展现上对应一个一级菜单、二级菜单、一个无菜单的独立页面或一个页面内的tab页签，少数内置前端模块组件不对应页面的业务入口；</li><li>模块组件在出某个产品的版本过程中，依据某个产品的配置打包到框架组件中后可以实现菜单、权限的自动注册与发现</li><li>模块组件在出某个产品的版本过程中，依据某个产品的配置打包到框架组件中后可以实现菜单、权限的自动注册与发现</li></ul></td>
+<td></td>
+</tr>
+<tr>
+<td>Console模块组件负责人</td>
+<td>对所负责的前端模块组件需求管理、版本合入计划、合入质量承担直接责任，考核通过后上岗: <ul><li>确认所负责前端模块组件代码库成员名单（审核人、提交者、贡献者）；</li><li>需求拆解并确认需求&amp;缺陷版本合入计划</li><li>确认跨团队同步合入，保障代码变更有效</li><li>跟踪特性合入状态与质量情况，及时跟踪并处理版本编译与自动化测试期间所遇到的问题；</li><li>对单元测试、自动化测试例的有效性承担责任；</li><li>提交代码变更需指定其他审核人Review；</li><li>对所负责前端模块组件的审核人、提交者工作成果进行评估；</li></ul></td>
+<td></td>
+</tr>
+<tr>
+<td>一级菜单</td>
+<td>界面上不需要操作即可默认呈现的菜单</td>
+<td>在CCOS0.0.4版控制台中主页、工作负载、网络都称为一级菜单 <img src="/./images/menu.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u8ba3acf4&margin=%5Bobject%20Object%5D&originHeight=988&originWidth=1274&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u64caaa45-af79-4a8b-bb6c-fb6a6477df8&title="></td>
+</tr>
+<tr>
+<td>二级菜单</td>
+<td>一级菜单下的下一级菜单</td>
+<td>在CCOS0.0.4版控制台中概览、Pod、项目成为二级菜单。  <img src="/./images/menu.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u8ba3acf4&margin=%5Bobject%20Object%5D&originHeight=988&originWidth=1274&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u64caaa45-af79-4a8b-bb6c-fb6a6477df8&title="></td>
+</tr>
+</tbody></table>
+<p><a name="pdLJ6"></a></p>
+<h1 id="二、业务页面开发管理策略"><a href="#二、业务页面开发管理策略" class="headerlink" title="二、业务页面开发管理策略"></a>二、业务页面开发管理策略</h1><p><a name="rIP8l"></a></p>
+<h2 id="2-1-责任归属"><a href="#2-1-责任归属" class="headerlink" title="2.1 责任归属"></a>2.1 责任归属</h2><p><a name="YGkWb"></a></p>
+<h3 id="2-1-1-规则"><a href="#2-1-1-规则" class="headerlink" title="2.1.1 规则"></a>2.1.1 规则</h3><table>
+<thead>
+<tr>
+<th>组件</th>
+<th>代码管理形式</th>
+<th>负责人</th>
+<th>职责</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Console框架组件</td>
+<td>独立仓库：<code>https://code.cestc.cn/ccos/console</code></td>
+<td>Console框架组件开发负责人</td>
+<td><ul><li>开发负责人对本组件的代码质量负责，有权利接纳或拒绝代码合入； </li><li>开发负责人必须维护组件开发知识库；</li><li>各部门开发人员允许开发和提交MR，对需求能否合规赶上版本计划负责；</li><ul></ul></ul></td>
+</tr>
+<tr>
+<td>Console模块组件</td>
+<td>位于<code>https://code.cestc.cn/ccos/console-module</code>子分组的独立Git仓库</td>
+<td>Console模块组件开发负责人</td>
+<td><ul><li>开发负责人对本组件的代码质量负责，有权利接纳或拒绝代码合入； </li><li>开发负责人必须维护组件开发知识库；</li><li>各部门开发人员允许开发和提交MR，对需求能否合规赶上版本计划负责；</li><ul></ul></ul></td>
+</tr>
+</tbody></table>
+<h3 id="2-1-3-责任田"><a href="#2-1-3-责任田" class="headerlink" title="2.1.3 责任田"></a>2.1.3 责任田</h3><ol>
+<li>具体框架组件和模块组件的责任田会根据代码仓库会根据架构迭代进展实时调整，具体情况跟踪CMO每个阶段的具体清单，不在规范中体现；</li>
+<li>模块组件的清单会根据产品业务迭代进展而变化，具体情况跟踪CMO每个阶段的具体清单，不在规范中体现。</li>
+</ol>
+<p><a name="ovwXW"></a></p>
+<h2 id="2-2-CCOS-Console组件关键代码目录说明"><a href="#2-2-CCOS-Console组件关键代码目录说明" class="headerlink" title="2.2 CCOS Console组件关键代码目录说明"></a>2.2 CCOS Console组件关键代码目录说明</h2><p><a name="z5Tgi"></a></p>
+<h3 id="2-2-1-console-frontend-public目录"><a href="#2-2-1-console-frontend-public目录" class="headerlink" title="2.2.1  console/frontend/public目录"></a>2.2.1  <code>console/frontend/public</code>目录</h3><p>console&#x2F;frontend&#x2F;public下其他部分全部属于Console框架组件。Components业务组件下红框部分按照业务属性拆分为独立功能模块、独立代码仓库管理<br><img src="/./images/filetree.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u47325092&margin=%5Bobject%20Object%5D&originHeight=781&originWidth=1286&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u2b329d55-6b2f-4116-adcb-7b724ff4d17&title="><br><a name="X6pK5"></a></p>
+<h3 id="2-2-2-console-x2F-frontend-x2F-packages目录"><a href="#2-2-2-console-x2F-frontend-x2F-packages目录" class="headerlink" title="2.2.2 console&#x2F;frontend&#x2F;packages目录"></a>2.2.2 console&#x2F;frontend&#x2F;packages目录</h3><p> console&#x2F;frontend&#x2F;packages目录作为Console框架中归集各功能模块的最终目标目录，不允许在此目录下直接提交代码（允许开发调试）；如果需求开发负责人评估需要提交，需要请Console开发负责人、架构部评审裁决。 </p>
+<p>部分模块清单：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>Console模块组件（代码仓库）</th>
+<th>组件描述</th>
+<th>类别</th>
+<th>责任部门</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><a href="mailto:git@code.cestc.cn">git@code.cestc.cn</a>:ccos&#x2F;console-module&#x2F;topology.git</td>
+<td>拓扑</td>
+<td>OCP插件</td>
+<td>CCOS</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="mailto:git@code.cestc.cn">git@code.cestc.cn</a>:ccos&#x2F;console-module&#x2F;rhoas-plugin.git</td>
+<td>云服务组件</td>
+<td>OCP插件</td>
+<td>CCOS</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="mailto:git@code.cestc.cn">git@code.cestc.cn</a>:ccos&#x2F;console-module&#x2F;pipelines-plugin.git</td>
+<td>流水线</td>
+<td>OCP插件</td>
+<td>CCOS</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="mailto:git@code.cestc.cn">git@code.cestc.cn</a>:ccos&#x2F;console-module&#x2F;operator-lifecycle-manager.git</td>
+<td>OLM</td>
+<td>OCP插件</td>
+<td>CCOS</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="mailto:git@code.cestc.cn">git@code.cestc.cn</a>:ccos&#x2F;console-module&#x2F;network-attachment-definition-plugin.git</td>
+<td>网络附加定义</td>
+<td>OCP插件</td>
+<td>CCOS</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="mailto:git@code.cestc.cn">git@code.cestc.cn</a>:ccos&#x2F;console-module&#x2F;local-storage-operator-plugin.git</td>
+<td>本地存储</td>
+<td>OCP插件</td>
+<td>CCOS</td>
+</tr>
+<tr>
+<td>7</td>
+<td><a href="mailto:git@code.cestc.cn">git@code.cestc.cn</a>:ccos&#x2F;console-module&#x2F;knative-plugin.git</td>
+<td>knative</td>
+<td>OCP插件</td>
+<td>CCOS</td>
+</tr>
+<tr>
+<td>8</td>
+<td><a href="mailto:git@code.cestc.cn">git@code.cestc.cn</a>:ccos&#x2F;console-module&#x2F;metal3-plugin.git</td>
+<td>裸金属插件</td>
+<td>OCP插件</td>
+<td>CCOS</td>
+</tr>
+<tr>
+<td>9</td>
+<td><a href="mailto:git@code.cestc.cn">git@code.cestc.cn</a>:ccos&#x2F;console-module&#x2F;insights-plugin.git</td>
+<td>监控</td>
+<td>OCP插件</td>
+<td>CCOS</td>
+</tr>
+<tr>
+<td>10</td>
+<td><a href="mailto:git@code.cestc.cn">git@code.cestc.cn</a>:ccos&#x2F;console-module&#x2F;gitops-plugin.git</td>
+<td>gitops</td>
+<td>OCP插件</td>
+<td>CCOS</td>
+</tr>
+<tr>
+<td>11</td>
+<td><a href="mailto:git@code.cestc.cn">git@code.cestc.cn</a>:ccos&#x2F;console-module&#x2F;container-security.git</td>
+<td>容器安全</td>
+<td>OCP插件</td>
+<td>CCOS</td>
+</tr>
+<tr>
+<td>12</td>
+<td><a href="mailto:git@code.cestc.cn">git@code.cestc.cn</a>:ccos&#x2F;console-module&#x2F;helm-plugin.git</td>
+<td>helm</td>
+<td>OCP插件</td>
+<td>CCOS</td>
+</tr>
+<tr>
+<td>13</td>
+<td><a href="mailto:git@code.cestc.cn">git@code.cestc.cn</a>:ccos&#x2F;console-module&#x2F;dev-console.git</td>
+<td>开发者目录</td>
+<td>OCP插件</td>
+<td>CCOS</td>
+</tr>
+<tr>
+<td>14</td>
+<td><a href="mailto:git@code.cestc.cn">git@code.cestc.cn</a>:ccos&#x2F;console-module&#x2F;git-service.git</td>
+<td>git仓库</td>
+<td>OCP插件</td>
+<td>CCOS</td>
+</tr>
+<tr>
+<td>15</td>
+<td><a href="mailto:git@code.cestc.cn">git@code.cestc.cn</a>:ccos&#x2F;console-module&#x2F;console-module-ceake.git</td>
+<td>CeaKE产品个性化界面</td>
+<td>OCP插件</td>
+<td>计算</td>
+</tr>
+<tr>
+<td>16</td>
+<td><a href="mailto:git@code.cestc.cn">git@code.cestc.cn</a>:ccos&#x2F;console-module&#x2F;ceph-storage-plugin.git</td>
+<td>ceph存储插件</td>
+<td>OCP插件</td>
+<td>CCOS</td>
+</tr>
+<tr>
+<td>17</td>
+<td><a href="mailto:git@code.cestc.cn">git@code.cestc.cn</a>:ccos&#x2F;console-module&#x2F;kubevirt-plugin.git</td>
+<td>虚拟化插件</td>
+<td>OCP插件</td>
+<td>计算</td>
+</tr>
+<tr>
+<td>18</td>
+<td><a href="mailto:git@code.cestc.cn">git@code.cestc.cn</a>:ccos&#x2F;console-module&#x2F;ceastor-plugin.git</td>
+<td>CeaStor产品</td>
+<td>CCOS业务模块</td>
+<td>存储</td>
+</tr>
+<tr>
+<td>19</td>
+<td><a href="mailto:git@code.cestc.cn">git@code.cestc.cn</a>:ccos&#x2F;console-module&#x2F;console-module-observe.git</td>
+<td>监控插件</td>
+<td>CCOS业务模块</td>
+<td></td>
+</tr>
+<tr>
+<td>20</td>
+<td><a href="mailto:git@code.cestc.cn">git@code.cestc.cn</a>:ccos&#x2F;console-module&#x2F;console-module-user-management.git</td>
+<td>用户管理</td>
+<td>CCOS业务模块</td>
+<td>运营运维</td>
+</tr>
+<tr>
+<td>21</td>
+<td><a href="mailto:git@code.cestc.cn">git@code.cestc.cn</a>:ccos&#x2F;console-module&#x2F;console-module-storage.git</td>
+<td>存储</td>
+<td>CCOS业务模块</td>
+<td>CCOS</td>
+</tr>
+<tr>
+<td>22</td>
+<td><a href="mailto:git@code.cestc.cn">git@code.cestc.cn</a>:ccos&#x2F;console-module&#x2F;console-module-demo.git</td>
+<td>模块化范例</td>
+<td>Console-module示例</td>
+<td>架构部</td>
+</tr>
+</tbody></table>
+<p>2.2 功能模块的迭代开发策略<br>新需求评审时候，需要涉及到的组件开发负责人共同评审，默认应当以组件开发团队开发为主，也可以由其他开发人员开发，组件开发负责人审核并未所有合入代码负责。保证模块合入后续该模块内的开发能够同时满足以下开发要求： </p>
+<ul>
+<li>按照模块级别做代码权限隔离 </li>
+<li>模块的装载可以实现菜单与权限的自动注册与发现<br><a name="Fv2VI"></a></li>
+</ul>
+<h1 id="三、常规页面开发过程规范"><a href="#三、常规页面开发过程规范" class="headerlink" title="三、常规页面开发过程规范"></a>三、常规页面开发过程规范</h1><p><a name="QcWRb"></a></p>
+<h2 id="3-1-功能代码"><a href="#3-1-功能代码" class="headerlink" title="3.1 功能代码"></a>3.1 功能代码</h2><p><a name="ndpwl"></a></p>
+<h3 id="3-1-1-默认语言"><a href="#3-1-1-默认语言" class="headerlink" title="3.1.1 默认语言"></a>3.1.1 默认语言</h3><p>默认应当使用TS而不是ES<br><a name="gZuH6"></a></p>
+<h3 id="3-1-2-基础规则"><a href="#3-1-2-基础规则" class="headerlink" title="3.1.2 基础规则"></a>3.1.2 基础规则</h3><ul>
+<li>【<strong>should&#x2F;应当</strong>】一个文件声明一个组件 </li>
+<li>【<strong>must&#x2F;必须</strong>】文件后缀和文件内容一致</li>
+</ul>
+<p>如果有内容模版则使用.tsx，纯代码使用 .ts </p>
+<ul>
+<li>【<strong>must&#x2F;必须</strong>】每一个文件以 export default 的形式暴露一个组件。</li>
+</ul>
+<p>如果一个文件中存在多个组件，则export default只允许暴露一个组件，其它组件均定义为内部组件。 </p>
+<ul>
+<li>【<strong>must&#x2F;必须</strong>】每个存放组件的目录使用一个 index.ts 以命名导出的形式暴露所有组件。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// Bad </span><br><span class="line">import Foo from &#x27;./Foo/index&#x27;; </span><br><span class="line"> </span><br><span class="line">// Good </span><br><span class="line">import Foo from &#x27;./Foo&#x27;; </span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><a name="vQBzX"></a></p>
+<h3 id="3-1-3-基础命名规则"><a href="#3-1-3-基础命名规则" class="headerlink" title="3.1.3 基础命名规则"></a>3.1.3 基础命名规则</h3><ul>
+<li><p>组件名称： 推荐使用大驼峰【PascalCase】命名; </p>
+</li>
+<li><p>属性名称： React DOM 使用小驼峰【camelCase】命令来定义属性的名称，而不使用 HTML 属性名称的命名约定； </p>
+</li>
+<li><p>style 样式属性： 采用小驼峰【camelCase】命名属性； </p>
+</li>
+<li><p>文件名称：组件名称与文件名称保持相同; </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 类组件名称 </span><br><span class="line">MyComponent </span><br><span class="line">// 函数组件名称 </span><br><span class="line">useSomeFunction </span><br><span class="line">// 属性名称 </span><br><span class="line">onClick </span><br><span class="line">// 样式属性 </span><br><span class="line">backgroundColor </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>组件的代码顺序 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">class Example extends Component &#123; </span><br><span class="line">    // 静态属性 </span><br><span class="line">    static displayName = &#x27;ExampleComponent&#x27; </span><br><span class="line">    static propTypes = &#123;&#125; </span><br><span class="line">    static contextTypes = &#123;&#125; </span><br><span class="line">    state defaultProps = &#123;&#125; </span><br><span class="line">    static state = &#123;&#125; </span><br><span class="line">    ...其它静态属性 </span><br><span class="line"> </span><br><span class="line">    // 实例属性 </span><br><span class="line">    someVariable = &#x27;&#x27; </span><br><span class="line">    ...其它实例属性 </span><br><span class="line"> </span><br><span class="line">    // 构造函数 </span><br><span class="line">    constructor </span><br><span class="line"> </span><br><span class="line">    // 声明周期钩子函数 </span><br><span class="line">    // 按照它们执行的顺序 </span><br><span class="line">    componentWillMount </span><br><span class="line">    componentWillReceiveProps </span><br><span class="line">    shouldComponentUpdate </span><br><span class="line">    componentDidMount </span><br><span class="line">    componentDidUpdate </span><br><span class="line">    componentWillUnmount </span><br><span class="line"> </span><br><span class="line">    // 事件处理方法 </span><br><span class="line">    handleClick = (e) =&gt; &#123; ... &#125; </span><br><span class="line"> </span><br><span class="line">    //其它方法 </span><br><span class="line">    someFunction() &#123; ... &#125; </span><br><span class="line"> </span><br><span class="line">    // 最后，render 方法 </span><br><span class="line">    render() &#123; ... &#125; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><a name="yK5Gb"></a></p>
+<h3 id="3-1-4-编码命名规范说明"><a href="#3-1-4-编码命名规范说明" class="headerlink" title="3.1.4 编码命名规范说明"></a>3.1.4 编码命名规范说明</h3><ul>
+<li>通用命名方法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>命名方法</strong></th>
+<th><strong>举例</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Camel命名法</td>
+<td>thisIsAnApple</td>
+</tr>
+<tr>
+<td>Pascal命名法</td>
+<td>ThisIsAnApple</td>
+</tr>
+</tbody></table>
+<p> 注意：在命名时尽量简洁明了，用英文表达（绝对不能用拼音或者首字母拼写） </p>
+<ul>
+<li>各类型命名规范</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>名称</strong></th>
+<th><strong>命名方法</strong></th>
+<th><strong>词汇种类</strong></th>
+<th><strong>说明</strong></th>
+<th><strong>举例</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>局部变量名</td>
+<td>Camel命名法</td>
+<td>名词</td>
+<td></td>
+<td>fristName</td>
+</tr>
+<tr>
+<td>参数名</td>
+<td>Camel命名法</td>
+<td>名词</td>
+<td></td>
+<td>fristName</td>
+</tr>
+<tr>
+<td>方法&#x2F;属性</td>
+<td>Camel命名法</td>
+<td>名词</td>
+<td></td>
+<td>fristName</td>
+</tr>
+<tr>
+<td>常量名</td>
+<td>下划线+全体大写</td>
+<td>名词</td>
+<td></td>
+<td>ADD_METHOD</td>
+</tr>
+<tr>
+<td>类名</td>
+<td>Pascal命名法</td>
+<td>名词</td>
+<td></td>
+<td>fristName</td>
+</tr>
+<tr>
+<td>局部变量名</td>
+<td>Camel命名法</td>
+<td>名词</td>
+<td></td>
+<td>AtiveDic</td>
+</tr>
+<tr>
+<td>Bool类型</td>
+<td>Camel命名法</td>
+<td>名词</td>
+<td>前缀:is&#x2F;has</td>
+<td>hasChild&#x2F;isFixed</td>
+</tr>
+</tbody></table>
+<ul>
+<li>函数与方法的命名</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>动词</strong></th>
+<th><strong>含义</strong></th>
+<th><strong>举例</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>can</td>
+<td>判断是否可以执行某个权限</td>
+<td>canLogin</td>
+</tr>
+<tr>
+<td>has</td>
+<td>判断是否含有某个值</td>
+<td>hasToken</td>
+</tr>
+<tr>
+<td>is</td>
+<td>判断是否为某个值</td>
+<td>isShowModel</td>
+</tr>
+<tr>
+<td>get</td>
+<td>获取某个值</td>
+<td>getUserId</td>
+</tr>
+<tr>
+<td>set</td>
+<td>设置某个值</td>
+<td>setCookie</td>
+</tr>
+<tr>
+<td>load</td>
+<td>加载某些数据</td>
+<td>loadList</td>
+</tr>
+<tr>
+<td>update</td>
+<td>更新某些数据</td>
+<td>updateUserInfo</td>
+</tr>
+<tr>
+<td>del</td>
+<td>删除某些数据</td>
+<td>delMenu</td>
+</tr>
+</tbody></table>
+<ul>
+<li>遍历</li>
+</ul>
+<p> 数组遍历<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let a = [1,2,3,4,5]; </span><br><span class="line">// Bad </span><br><span class="line">for (let i = 0; i &lt; a.length; i++) &#123; </span><br><span class="line">    console.log(a[i]); </span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line">// Good </span><br><span class="line">a.forEach(e =&gt; &#123; </span><br><span class="line">    console.log(e); </span><br><span class="line">&#125;) </span><br><span class="line">// OR </span><br><span class="line">a.map(e =&gt; &#123; </span><br><span class="line">    console.log(e); </span><br><span class="line">&#125;); </span><br></pre></td></tr></table></figure><br>对象遍历<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">let a = &#123;name:&#x27;Lucy&#x27;, age:32, sex:&#x27;女&#x27;&#125;; </span><br><span class="line">// Bad </span><br><span class="line">for (o in a) &#123; </span><br><span class="line">    console.log(a[o]); </span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line">// Good </span><br><span class="line">for (o in a) &#123; </span><br><span class="line">    if (a.hasOwnProperty(o)) &#123; </span><br><span class="line">        console.log(a[o]); </span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></p>
+<p><a name="H7KRH"></a></p>
+<h3 id="3-1-5-TSX规则"><a href="#3-1-5-TSX规则" class="headerlink" title="3.1.5 TSX规则"></a>3.1.5 TSX规则</h3><h4 id="没有子节点的非DOM组件使用自闭合语法。"><a href="#没有子节点的非DOM组件使用自闭合语法。" class="headerlink" title="没有子节点的非DOM组件使用自闭合语法。"></a>没有子节点的非DOM组件使用自闭合语法。</h4><p>&#x2F;&#x2F; Bad<br><Foo></Foo><br><Foo><br><Foo><br><Foo> </Foo></Foo></Foo></p>
+<p>&#x2F;&#x2F; Good<br><Foo> </Foo></p>
+<h4 id="保持起始和结束标签在同一层缩进。"><a href="#保持起始和结束标签在同一层缩进。" class="headerlink" title="保持起始和结束标签在同一层缩进。"></a>保持起始和结束标签在同一层缩进。</h4><p> 对于标签前面有其它语句（如return的情况，使用括号进行换行和缩进）。<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// Bad </span><br><span class="line">class Message &#123; </span><br><span class="line">  render() &#123; </span><br><span class="line">    return &lt;div&gt; </span><br><span class="line">      &lt;span&gt;Hello World&lt;/span&gt; </span><br><span class="line">    &lt;/div&gt;; </span><br><span class="line">  &#125; </span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line">// Good </span><br><span class="line">class Message &#123; </span><br><span class="line">  render() &#123; </span><br><span class="line">    return ( </span><br><span class="line">      &lt;div&gt; </span><br><span class="line">        &lt;span&gt;Hello World&lt;/span&gt; </span><br><span class="line">      &lt;/div&gt; </span><br><span class="line">    ); </span><br><span class="line">  &#125; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></p>
+<h4 id="对于直接return的函数组件，可以直接使用括号而省去大括号和return关键字"><a href="#对于直接return的函数组件，可以直接使用括号而省去大括号和return关键字" class="headerlink" title="对于直接return的函数组件，可以直接使用括号而省去大括号和return关键字"></a>对于直接return的函数组件，可以直接使用括号而省去大括号和return关键字</h4> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let Message = () =&gt; ( </span><br><span class="line">  &lt;div&gt; </span><br><span class="line">    &lt;span&gt;Hello World&lt;/span&gt; </span><br><span class="line">  &lt;/div&gt; </span><br><span class="line">); </span><br></pre></td></tr></table></figure>
+<h4 id="对于多属性需要换行，从第一个属性开始，每个属性一行"><a href="#对于多属性需要换行，从第一个属性开始，每个属性一行" class="headerlink" title="对于多属性需要换行，从第一个属性开始，每个属性一行"></a>对于多属性需要换行，从第一个属性开始，每个属性一行</h4> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 没有子节点 </span><br><span class="line">&lt;SomeComponent </span><br><span class="line">  longProp=&#123;longProp&#125; </span><br><span class="line">  anotherLongProp=&#123;anotherLongProp&#125; </span><br><span class="line">/&gt; </span><br><span class="line"> </span><br><span class="line">// 有子节点 </span><br><span class="line">&lt;SomeComponent </span><br><span class="line">  longProp=&#123;longProp&#125; </span><br><span class="line">  anotherLongProp=&#123;anotherLongProp&#125; </span><br><span class="line">&gt; </span><br><span class="line">  &lt;SomeChild /&gt; </span><br><span class="line">  &lt;SomeChild /&gt; </span><br><span class="line">&lt;/SomeComponent&gt; </span><br><span class="line"> </span><br><span class="line">// Bad </span><br><span class="line">&lt;Foo superLongParam=&quot;bar&quot; </span><br><span class="line">     anotherSuperLongParam=&quot;baz&quot; /&gt; </span><br></pre></td></tr></table></figure>
+<h4 id="以字符串字面量作为值的属性使用双引号（”），在其它类型表达式中的字符串使用单引号（’）。"><a href="#以字符串字面量作为值的属性使用双引号（”），在其它类型表达式中的字符串使用单引号（’）。" class="headerlink" title="以字符串字面量作为值的属性使用双引号（”），在其它类型表达式中的字符串使用单引号（’）。"></a>以字符串字面量作为值的属性使用双引号（”），在其它类型表达式中的字符串使用单引号（’）。</h4> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// Bad </span><br><span class="line">&lt;Foo bar=&#x27;bar&#x27; /&gt; </span><br><span class="line">&lt;Foo style=&#123;&#123;width: &quot;20px&quot;&#125;&#125; /&gt; </span><br><span class="line"> </span><br><span class="line">// Good </span><br><span class="line">&lt;Foo bar=&quot;bar&quot; /&gt; </span><br><span class="line">&lt;Foo style=&#123;&#123;width: &#x27;20px&#x27;&#125;&#125; /&gt; </span><br></pre></td></tr></table></figure>
+<h4 id="对于值为true的属性，省去值部分。"><a href="#对于值为true的属性，省去值部分。" class="headerlink" title="对于值为true的属性，省去值部分。"></a>对于值为true的属性，省去值部分。</h4> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// Bad </span><br><span class="line">&lt;Foo visible=&#123;true&#125; /&gt; </span><br><span class="line"> </span><br><span class="line">// Good </span><br><span class="line">&lt;Foo visible /&gt; </span><br></pre></td></tr></table></figure>
+<h4 id="对于需要使用key的场合"><a href="#对于需要使用key的场合" class="headerlink" title="对于需要使用key的场合"></a>对于需要使用key的场合</h4><p>提供一个唯一标识作为key属性的值，禁止使用可能会变化的属性（如索引）。当元素没有确定 id 的时候，万不得已你可以使用元素索引 index 作为 key，但是要主要如果列表项目的顺序可能会变化，如果使用索引来用作 key 值，因为这样做会导致性能变差，还可能引起组件状态的问题。<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> key属性是React在进行列表更新时的重要属性，如该属性会发生变化，渲染的性能和正确性都无法得到保证。一般如果缺少key，编译运行会有警告⚠️ </span><br><span class="line">// Bad </span><br><span class="line">&#123;list.map((item, index) =&gt; &lt;Foo key=&#123;index&#125; &#123;...item&#125; /&gt;)&#125; </span><br><span class="line"> </span><br><span class="line">// Good </span><br><span class="line">&#123;list.map(item =&gt; &lt;Foo key=&#123;item.id&#125; &#123;...item&#125; /&gt;)&#125; </span><br><span class="line"> </span><br><span class="line">// Bad </span><br><span class="line">&#123;todos.map((todo, index) =&gt; </span><br><span class="line">  &lt;Todo </span><br><span class="line">    &#123;...todo&#125; </span><br><span class="line">    key=&#123;index&#125; </span><br><span class="line">  /&gt; </span><br><span class="line">)&#125; </span><br><span class="line"> </span><br><span class="line">// Good </span><br><span class="line">&#123;todos.map(todo =&gt; ( </span><br><span class="line">  &lt;Todo </span><br><span class="line">    &#123;...todo&#125; </span><br><span class="line">    key=&#123;todo.id&#125; </span><br><span class="line">  /&gt; </span><br><span class="line">))&#125; </span><br></pre></td></tr></table></figure></p>
+<h4 id="使用箭头函数（arrow-function）为组件绑定事件处理器"><a href="#使用箭头函数（arrow-function）为组件绑定事件处理器" class="headerlink" title="使用箭头函数（arrow function）为组件绑定事件处理器"></a>使用箭头函数（arrow function）为组件绑定事件处理器</h4> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// Bad </span><br><span class="line"> constructor(props) &#123; </span><br><span class="line">    super(props); </span><br><span class="line">    this.handleClick = this.handleClick.bind(this); </span><br><span class="line"> &#125; </span><br><span class="line"> handleClick()&#123; </span><br><span class="line">    console.log(&#x27;this is:&#x27;, this); </span><br><span class="line"> &#125; </span><br><span class="line"> &lt;button onClick=&#123;this.handleClick&#125;&gt; Click me &lt;/button&gt; </span><br><span class="line"> </span><br><span class="line">// Good </span><br><span class="line"> handleClick = () =&gt; &#123; </span><br><span class="line">    console.log(&#x27;this is:&#x27;, this); </span><br><span class="line"> &#125; </span><br><span class="line"> &lt;button onClick=&#123;this.handleClick&#125;&gt; Click me &lt;/button&gt; </span><br></pre></td></tr></table></figure>
+<h4 id="避免在TSX的属性值中直接使用对象和函数表达式。"><a href="#避免在TSX的属性值中直接使用对象和函数表达式。" class="headerlink" title="避免在TSX的属性值中直接使用对象和函数表达式。"></a>避免在TSX的属性值中直接使用对象和函数表达式。</h4><p> 在TSX的属性值中使用对象、函数表达式会造成每一次的对象引用不同，导致不必要的渲染。<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// Bad </span><br><span class="line">class WarnButton &#123; </span><br><span class="line">  alertMessage(message) &#123; </span><br><span class="line">    alert(message); </span><br><span class="line">  &#125; </span><br><span class="line"> </span><br><span class="line">  render() &#123; </span><br><span class="line">    return &lt;button type=&quot;button&quot; onClick=&#123;() =&gt; this.alertMessage(this.props.message)&#125;&gt;提示&lt;/button&gt; </span><br><span class="line">  &#125; </span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line">// Good </span><br><span class="line">class WarnButton &#123; </span><br><span class="line">  alertMessage = () =&gt; &#123; </span><br><span class="line">    alert(this.props.message); </span><br><span class="line">  &#125; </span><br><span class="line"> </span><br><span class="line">  render() &#123; </span><br><span class="line">    return &lt;button type=&quot;button&quot; onClick=&#123;this.alertMessage&#125;&gt;提示&lt;/button&gt; </span><br><span class="line">  &#125; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></p>
+<h4 id="将TSX的层级控制在3层以内。"><a href="#将TSX的层级控制在3层以内。" class="headerlink" title="将TSX的层级控制在3层以内。"></a>将TSX的层级控制在3层以内。</h4><p> TSX提供了基于组件的便携的复用形式，因此可以通过将结构中的一部分封装为一个函数组件来很好地拆分大型复杂的结构。层次过深的结构会带来过多缩进、可读性下降等缺点。如同控制函数内代码行数和分支层级一样，对TSX的层级进行控制可以有效提升代码的可维护性。 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">// Bad </span><br><span class="line">let List = (&#123;items&#125;) =&gt; ( </span><br><span class="line">  &lt;ul&gt; </span><br><span class="line">    &#123; </span><br><span class="line">      items.map(item =&gt; ( </span><br><span class="line">        &lt;li&gt; </span><br><span class="line">          &lt;header&gt; </span><br><span class="line">            &lt;h3&gt;&#123;item.title&#125;&lt;/h3&gt; </span><br><span class="line">            &lt;span&gt;&#123;item.subtitle&#125;&lt;/span&gt; </span><br><span class="line">          &lt;/header&gt; </span><br><span class="line">          &lt;section&gt;&#123;item.content&#125;&lt;/section&gt; </span><br><span class="line">          &lt;footer&gt; </span><br><span class="line">            &lt;span&gt;&#123;item.author&#125;&lt;/span&gt;@&lt;time&gt;&#123;item.postTime&#125;&lt;/time&gt; </span><br><span class="line">          &lt;/footer&gt; </span><br><span class="line">        &lt;/li&gt; </span><br><span class="line">      )) </span><br><span class="line">    &#125; </span><br><span class="line">  &lt;/ul&gt; </span><br><span class="line">); </span><br><span class="line"> </span><br><span class="line">// Good </span><br><span class="line">let Header = (&#123;title, subtitle&#125;) =&gt; ( </span><br><span class="line">  &lt;header&gt; </span><br><span class="line">    &lt;h3&gt;&#123;title&#125;&lt;/h3&gt; </span><br><span class="line">    &lt;span&gt;&#123;subtitle&#125;&lt;/span&gt; </span><br><span class="line">  &lt;/header&gt; </span><br><span class="line">); </span><br><span class="line"> </span><br><span class="line">let Content = (&#123;content&#125;) =&gt; &lt;section&gt;&#123;content&#125;&lt;/section&gt;; </span><br><span class="line"> </span><br><span class="line">let Footer = (&#123;author, postTime&#125;) =&gt; ( </span><br><span class="line">  &lt;footer&gt; </span><br><span class="line">    &lt;span&gt;&#123;author&#125;&lt;/span&gt;@&lt;time&gt;&#123;postTime&#125;&lt;/time&gt; </span><br><span class="line">  &lt;/footer&gt; </span><br><span class="line">); </span><br><span class="line"> </span><br><span class="line">let Item = item =&gt; ( </span><br><span class="line">  &lt;div&gt; </span><br><span class="line">    &lt;Header &#123;...item&#125; /&gt; </span><br><span class="line">    &lt;Content &#123;...item&#125; /&gt; </span><br><span class="line">    &lt;Footer &#123;...item&#125; /&gt; </span><br><span class="line">  &lt;/div&gt; </span><br><span class="line">); </span><br><span class="line"> </span><br><span class="line">let List = (&#123;items&#125;) =&gt; ( </span><br><span class="line">  &lt;ul&gt; </span><br><span class="line">    &#123;items.map(Item)&#125; </span><br><span class="line">  &lt;/ul&gt; </span><br><span class="line">); </span><br></pre></td></tr></table></figure>
+
+<h4 id="State相关"><a href="#State相关" class="headerlink" title="State相关"></a>State相关</h4><p> 不要直接修改 state<br> 除了 state 初始化外，其它地方修改 state，需要使用 setState( ) 方法，否则如果直接赋值，则不会重新渲染组件。 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// Bad </span><br><span class="line">this.state.comment = &#x27;hello&#x27;; </span><br><span class="line"> </span><br><span class="line">// Good </span><br><span class="line">this.setState(&#123;comment: &#x27;Hello&#x27;&#125;); </span><br></pre></td></tr></table></figure>
+
+<p> State 的更新可能是异步的<br> 出于性能考虑，React 可能会把多个 setState( ) 调用合并成一个调用；因为 this.props 和 this.state 可能会异步更新，所以这种场景下需要让 setState() 接收一个函数而不是一个对象 。 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// Bad </span><br><span class="line">this.setState(&#123; </span><br><span class="line">  counter: this.state.counter + this.props.increment, </span><br><span class="line">&#125;); </span><br><span class="line"> </span><br><span class="line">// Good </span><br><span class="line">this.setState((state, props) =&gt; (&#123; </span><br><span class="line">  counter: state.counter + props.increment </span><br><span class="line">&#125;)); </span><br></pre></td></tr></table></figure>
+
+<h4 id="所有组件均需声明propTypes"><a href="#所有组件均需声明propTypes" class="headerlink" title="所有组件均需声明propTypes"></a>所有组件均需声明propTypes</h4><p> propsTypes在提升组件健壮性的同时，也是一种类似组件的文档的存在，有助于代码的阅读和理解。<br> 如无必要，使用静态属性语法声明propsTypes、contextTypes、defaultProps和state。 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// Bad </span><br><span class="line">class Example extends React.Component &#123; </span><br><span class="line">  render() &#123; </span><br><span class="line">    // ... </span><br><span class="line">  &#125; </span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line">Example.propTypes = &#123; </span><br><span class="line">  name: PropTypes.string </span><br><span class="line">&#125;; </span><br><span class="line"> </span><br><span class="line">// Good </span><br><span class="line">class Example extends React.Component &#123; </span><br><span class="line">  static defaultProps = &#123; </span><br><span class="line">    name: &#x27;stranger&#x27; </span><br><span class="line">  &#125; </span><br><span class="line"> </span><br><span class="line">  render() &#123; </span><br><span class="line">   // ... </span><br><span class="line">  &#125; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p><a name="H6X7K"></a></p>
+<h2 id="3-2-样式与主题"><a href="#3-2-样式与主题" class="headerlink" title="3.2 样式与主题"></a>3.2 样式与主题</h2><p><a name="kgQIJ"></a></p>
+<h3 id="3-2-1-基本原则"><a href="#3-2-1-基本原则" class="headerlink" title="3.2.1 基本原则"></a>3.2.1 基本原则</h3><ol>
+<li>不允许在3.2.2、3.2.3、3.2.4之外描述的其他位置存放样式文件，如果开发团队认为有必要则发起评审，由架构部审核裁决； </li>
+<li>颜色、尺寸相关的内容不要在scss文件里写死，用scss变量去定义； </li>
+<li>相同功能的类似模块，样式应当复用。</li>
+</ol>
+<p><a name="C2RGA"></a></p>
+<h3 id="3-2-2-功能模块"><a href="#3-2-2-功能模块" class="headerlink" title="3.2.2 功能模块"></a>3.2.2 功能模块</h3><p>主要公共样式文件统一存放在frontend&#x2F;public&#x2F;styles目录下，允许每个功能模块在frontend&#x2F;public&#x2F;styles&#x2F;目录下存放本模块对应的样式文件，文件命名统一以”<em>module</em>{$ModuleName}_”为前缀命名。<br>该类样式代码编写由功能模块开发团队负责，代码合入由Console负责人审核； </p>
+<p><a name="T977o"></a></p>
+<h3 id="3-2-3-React-Components"><a href="#3-2-3-React-Components" class="headerlink" title="3.2.3 React Components"></a>3.2.3 React Components</h3><p>遵循React书写规范，Components的私有样式放在components自己的目录内部；<br>该类样式代码编写由功能模块开发团队负责，代码合入由功能模块负责人审核；<br><a name="a1VIW"></a></p>
+<h3 id="3-2-4-主题"><a href="#3-2-4-主题" class="headerlink" title="3.2.4 主题"></a>3.2.4 主题</h3><p>主题样式文件统一存放在frontend&#x2F;public&#x2F;styles&#x2F;themes目录下，存放根据不同主题切换的差异化样式代码，文件命名统一以”<em>theme</em>{$ThemeName}_”为前缀命名；该类样式代码编写由功能模块开发团队负责，由架构部审核；<br>该类样式代码编写由功能模块开发团队负责，代码合入由Console负责人审核；<br><a name="ryXl0"></a></p>
+<h2 id="3-3-国际化规范"><a href="#3-3-国际化规范" class="headerlink" title="3.3 国际化规范"></a>3.3 国际化规范</h2><p><a name="PCAo9"></a></p>
+<h3 id="3-3-1-词库位置"><a href="#3-3-1-词库位置" class="headerlink" title="3.3.1 词库位置"></a>3.3.1 词库位置</h3><p>Console组件主工程的国际化词库位置须放在 frontend&#x2F;public&#x2F;locales 目录下，功能模块的国际化词库位置须放在  {$modules_name}&#x2F;locales 目录下；<br><a name="IoxWr"></a></p>
+<h3 id="3-3-2-目录结构"><a href="#3-3-2-目录结构" class="headerlink" title="3.3.2 目录结构"></a>3.3.2 目录结构</h3><p>以 ceph-storage-plugin 模块举例：<br>├── en<br>│   └── ceph-storage-plugin.json<br>├── ja<br>│   └── ceph-storage-plugin.json<br>├── ko<br>│   └── ceph-storage-plugin.json<br>└── zh<br>    └── ceph-storage-plugin.json<br><a name="TOHrt"></a></p>
+<h3 id="3-3-3-语种支持"><a href="#3-3-3-语种支持" class="headerlink" title="3.3.3 语种支持"></a>3.3.3 语种支持</h3><p>支持zh、en语种，每次修改必须保持双语支持。<br><a name="rI24J"></a></p>
+<h3 id="3-3-4-文件名约束"><a href="#3-3-4-文件名约束" class="headerlink" title="3.3.4 文件名约束"></a>3.3.4 文件名约束</h3><ul>
+<li>动态插件需要文件加plugin__前缀：plugin__${目录名}.json。比如动态插件console-demo-plugin目录：文件名为plugin__console-demo-plugin.json</li>
+<li>静态插件：文件名最好与插件目录的名字一致。比如静态插件kubevirt-plugin目录，文件名为kubevirt-plugin.json<br><a name="kICE3"></a></li>
+</ul>
+<h2 id="3-4-单元测试用例编写与维护"><a href="#3-4-单元测试用例编写与维护" class="headerlink" title="3.4 单元测试用例编写与维护"></a>3.4 单元测试用例编写与维护</h2><p><a name="DHDXb"></a></p>
+<h3 id="3-4-1-用例库位置"><a href="#3-4-1-用例库位置" class="headerlink" title="3.4.1 用例库位置"></a>3.4.1 用例库位置</h3><p>Console组件主工程的国际化词库位置须放在 frontend&#x2F;public&#x2F;<strong>tests</strong> 目录下，功能模块的国际化词库位置须放在  {$modules_name}&#x2F;<strong>tests</strong> 目录下；<br><a name="w6qCC"></a></p>
+<h3 id="3-4-2-文件名约定"><a href="#3-4-2-文件名约定" class="headerlink" title="3.4.2 文件名约定"></a>3.4.2 文件名约定</h3><p>单测文件名以.spec.ts(x)(或.spec.js(x))为后缀名，例如：pods.spec.ts<br><a name="i5BHO"></a></p>
+<h2 id="3-5-E2E自动化用例编写与维护"><a href="#3-5-E2E自动化用例编写与维护" class="headerlink" title="3.5 E2E自动化用例编写与维护"></a>3.5 E2E自动化用例编写与维护</h2><p><a name="eAOWW"></a></p>
+<h3 id="3-5-1-用例库位置"><a href="#3-5-1-用例库位置" class="headerlink" title="3.5.1 用例库位置"></a>3.5.1 用例库位置</h3><p>Console主工程的用例库位置frontend&#x2F;integration-tests&#x2F;目录下。<br>功能模块的用例库位置在frontend&#x2F;packages&#x2F;${module_name}  下，有两种： </p>
+<ul>
+<li>${module_name}&#x2F;integration-tests&#x2F;  是采用protractor编写的用例 </li>
+<li>${module_name}&#x2F;integration-tests-cypress&#x2F;  是采用cypress编写的用例<br><a name="FmCut"></a></li>
+</ul>
+<h3 id="3-5-2-文件名约定"><a href="#3-5-2-文件名约定" class="headerlink" title="3.5.2 文件名约定"></a>3.5.2 文件名约定</h3><ol>
+<li>test入口文件：放在对应的integration-tests&#x2F;tests&#x2F;目录下，每组测试</li>
+</ol>
+<ul>
+<li>protractor方案：以.scenario.ts（或.scenario.js）为文件名后缀，例如：secrets.scenario.ts</li>
+<li>cypress方案：以.spec.ts（或. spec.js）为文件名后缀，例如：devconsole.spec.ts</li>
+</ul>
+<ol>
+<li>封装的可复用页面对应工具函数文件：每个.scenario.ts文件调用的对应页面的工具方法在integration-tests&#x2F;views&#x2F;目录下写对应的xx.view.ts，例如：secrets.view.ts</li>
+</ol>
+<p><img src="/./images/integration-tests.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=ud3656458&margin=%5Bobject%20Object%5D&originHeight=1478&originWidth=1078&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u0a3c99ba-1c5c-4da0-bcdc-30b57785958&title="><br><a name="QUOdE"></a></p>
+<h3 id="3-5-3-用例完整度约定"><a href="#3-5-3-用例完整度约定" class="headerlink" title="3.5.3 用例完整度约定"></a>3.5.3 用例完整度约定</h3><p>一个完整的常规模块通常是包含完整的CRUD操作的，开发人员需要对模块的完整CRUD操作编写对应的用例，完成P1级主流程自动化测试。<br><a name="pYb3n"></a></p>
+<h1 id="四、登录认证相关页面"><a href="#四、登录认证相关页面" class="headerlink" title="四、登录认证相关页面"></a>四、登录认证相关页面</h1><p>CCOS架构下会孵化多款产品，不同产品应当在Console-Operator组件中定制登录认证相关的页面，最终通过secret机制赋值给OAuth-server组件令自定义登录页面生效。</p>
+<ol>
+<li>登录认证相关页面提交至console-operator组件，以secret的形式存在，产品自定义登录认证页面开发由产品开发团队负责；</li>
+<li>各个不同的产品会自定义console-operator组件流水线，通过自己的产品打包配置清单来获取自己产品自定义的登录认证相关页面，流水线配置由产品开发团队负责；</li>
+</ol>
+<h1 id="五、CI-x2F-CD"><a href="#五、CI-x2F-CD" class="headerlink" title="五、CI&#x2F;CD"></a>五、CI&#x2F;CD</h1><p><a name="sthE3"></a></p>
+<h2 id="4-1-CMO操作"><a href="#4-1-CMO操作" class="headerlink" title="4.1 CMO操作"></a>4.1 CMO操作</h2><p>CMO视角打包只需要选择要构建的产品、要构建的版本；<br>在生产环境构建时由自动化脚本自动触发上述动作；<br><img src="/./images/cicd.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u8f27915d&margin=%5Bobject%20Object%5D&originHeight=702&originWidth=2500&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u603a8df8-764f-41ee-9257-fd69c8d4d1f&title="><br><a name="Ghd78"></a></p>
+<h2 id="4-2-Console组件建脚本的开发与维护"><a href="#4-2-Console组件建脚本的开发与维护" class="headerlink" title="4.2 Console组件建脚本的开发与维护"></a>4.2 Console组件建脚本的开发与维护</h2><p>基本约束：基于CCOS的不同产品在基于同一个Console组件，搭建各自的开发、生产流水线，依据不同的产品配置打包前端清单来构建出来不同产品的UI镜像。<br>一款新产品初始化时，应对build-frontend.sh完成初始化部署开发和流水线进行初始化配置。<br>详细开发和维护方案请见示例篇。<br><a name="K7kn4"></a></p>
+<h2 id="4-3-UI自动化测试流水线"><a href="#4-3-UI自动化测试流水线" class="headerlink" title="4.3 UI自动化测试流水线"></a>4.3 UI自动化测试流水线</h2><ol>
+<li>流程前置依赖：需要用最新代码先完成镜像构建并在对应环境更新好镜像； </li>
+<li><a target="_blank" rel="noopener" href="https://cdp.cestc.cn/product/#/project/pipeline/result?projectId=1501448966260252673&pipelineId=1526470198807662594">自动化测试流水线</a>（Unit Test &amp; E2E），需要指明参数： <ol>
+<li>代码分支 </li>
+<li>对应环境的IP </li>
+<li>本次包需要加载的模块<br><a name="qdkU4"></a></li>
+</ol>
+</li>
+</ol>
+<h1 id="七、工作流程与协作规范"><a href="#七、工作流程与协作规范" class="headerlink" title="七、工作流程与协作规范"></a>七、工作流程与协作规范</h1><p><a name="et4xJ"></a></p>
+<h2 id="5-1-整体开发流程"><a href="#5-1-整体开发流程" class="headerlink" title="5.1 整体开发流程"></a>5.1 整体开发流程</h2><p>整体开发流程、版本规范、代码分支策略等遵循《软件开发配置管理规范》<br><img src="/./images/workflow.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u02d4b1c6&margin=%5Bobject%20Object%5D&originHeight=550&originWidth=1033&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=ufc933069-c41c-4354-a39c-42132550a1e&title="><br><a name="gGVib"></a></p>
+<h2 id="5-2-前端开发与UED设计共同遵循的需求处理工作流"><a href="#5-2-前端开发与UED设计共同遵循的需求处理工作流" class="headerlink" title="5.2 前端开发与UED设计共同遵循的需求处理工作流"></a>5.2 前端开发与UED设计共同遵循的需求处理工作流</h2><p><img src="/./images/workflow2.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=ub1b00da7&margin=%5Bobject%20Object%5D&originHeight=3181&originWidth=2402&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=ud244b4b5-b754-4e71-812b-89598699334&title="><br><a name="Lu8N1"></a></p>
+<h2 id="5-3-代码提交规范"><a href="#5-3-代码提交规范" class="headerlink" title="5.3 代码提交规范"></a>5.3 代码提交规范</h2><ol>
+<li>Commit能通过commitlint检查，commitlog符合<a target="_blank" rel="noopener" href="https://code.cestc.cn/-/ide/project/ccos/ccos-design/tree/zhangzhengji/-/designs/UI-FE/CCOS%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81CommitLog%E8%A7%84%E8%8C%83V1.md/">《CCOS前端代码commit</a><a target="_blank" rel="noopener" href="https://code.cestc.cn/-/ide/project/ccos/ccos-design/tree/zhangzhengji/-/designs/UI-FE/CCOS%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81CommitLog%E8%A7%84%E8%8C%83V1.md/">规范</a><a target="_blank" rel="noopener" href="https://code.cestc.cn/-/ide/project/ccos/ccos-design/tree/zhangzhengji/-/designs/UI-FE/CCOS%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81CommitLog%E8%A7%84%E8%8C%83V1.md/">》</a>； </li>
+<li>必须通过单元测试，详见第3.4节， </li>
+<li>必须通过E2E测试，详见3.5节； </li>
+<li>如果需要合入到主干，必须提在线MR： <ol>
+<li>提供CDP链接：需求单或bugfix单 </li>
+<li>本次改动详细的描述信息 </li>
+<li>提供单元测试报告：CDP的运行日志 </li>
+<li>提供E2E测试报告: 包含CDP的运行日志 + 对应E2E运行所起pod的日志</li>
+</ol>
+</li>
+<li>UED走查报告；</li>
+</ol>
+<h1 id="八、实践示例（持续补充，过时内容需要持续刷新）"><a href="#八、实践示例（持续补充，过时内容需要持续刷新）" class="headerlink" title="八、实践示例（持续补充，过时内容需要持续刷新）"></a>八、实践示例（持续补充，过时内容需要持续刷新）</h1><p><a name="rePGH"></a></p>
+<h2 id="（一）开发者流程视角下的新手指南"><a href="#（一）开发者流程视角下的新手指南" class="headerlink" title="（一）开发者流程视角下的新手指南"></a>（一）开发者流程视角下的新手指南</h2><p><a target="_blank" rel="noopener" href="https://c3yomn2yko.feishu.cn/docs/doccncnbHj9mVrjtBQ7AtROLDYd">CCOS架构控制台组件前端开发新手指引V1</a><br><a name="OyR8w"></a></p>
+<h2 id="（二）前端模块最佳实践"><a href="#（二）前端模块最佳实践" class="headerlink" title="（二）前端模块最佳实践"></a>（二）前端模块最佳实践</h2><p><a target="_blank" rel="noopener" href="https://code.cestc.cn/ccos/ccos-design/-/blob/frontend-doc/%E5%88%86%E6%9E%90/UI-FE/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E4%B8%80%E4%B8%AA%E4%B8%9A%E5%8A%A1%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AA%E4%B8%9A%E5%8A%A1%E6%A8%A1%E5%9D%97-%E9%9D%99%E6%80%81%E6%8F%92%E4%BB%B6.md">https://code.cestc.cn/ccos/ccos-design/-/blob/frontend-doc/%E5%88%86%E6%9E%90/UI-FE/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E4%B8%80%E4%B8%AA%E4%B8%9A%E5%8A%A1%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AA%E4%B8%9A%E5%8A%A1%E6%A8%A1%E5%9D%97-%E9%9D%99%E6%80%81%E6%8F%92%E4%BB%B6.md</a></p>
+<h2 id="（三）单元测试开发-amp-调试"><a href="#（三）单元测试开发-amp-调试" class="headerlink" title="（三）单元测试开发&amp;调试"></a>（三）单元测试开发&amp;调试</h2><ol>
+<li>调试单个文件单测使用.&#x2F;node_modules&#x2F;.bin&#x2F;jest工具，举例：</li>
+</ol>
+<p>.&#x2F;node_modules&#x2F;.bin&#x2F;jest  frontend&#x2F;<strong>tests</strong>&#x2F;units.spec.js </p>
+<ol>
+<li>需要运行全部单测：yarn run test </li>
+<li>提交代码前需要执行第2步，运行全部单元测试用例，保证全部通过<br><a name="oZisF"></a></li>
+</ol>
+<h2 id="（四）E2E开发-amp-调试"><a href="#（四）E2E开发-amp-调试" class="headerlink" title="（四）E2E开发&amp;调试"></a>（四）E2E开发&amp;调试</h2><p>protractor 技术框架-<a target="_blank" rel="noopener" href="https://www.protractortest.org/#/tutorial">官方文档</a>： </p>
+<ol>
+<li>在入口文件<code>frontend/integration-tests/protractor.conf.ts</code>的testSuites数组里新增一组自己的分组，例如分组secrets</li>
+</ol>
+<p><img src="/./images/protractor.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u536728a6&margin=%5Bobject%20Object%5D&originHeight=1376&originWidth=1846&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=ue4ae078e-fb5a-4400-9211-3a22eeb6158&title="></p>
+<ol start="2">
+<li>连接到远程的环境 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 需要有 kubectl 和 oc命令 </span><br><span class="line">$ oc login xxxx:6443 --token sha-xxxx </span><br><span class="line">$ oc apply -f ./frontend/integration-tests/data/htpasswd-secret.yaml </span><br><span class="line">$ oc patch oauths cluster --patch &quot;$(cat ./frontend/integration-tests/data/patch-htpasswd.yaml)&quot; --type=merge </span><br><span class="line">$ export BRIDGE_BASE_ADDRESS=&quot;$(oc get consoles.config.openshift.io cluster -o jsonpath=&#x27;&#123;.status.consoleURL&#125;&#x27;)&quot; </span><br><span class="line">$ export BRIDGE_KUBEADMIN_PASSWORD=$(cat &quot;/root/single/install/auth/kubeadmin-password&quot; </span><br><span class="line"># CHROME_VERSION为本地的实际的chrome版本 </span><br><span class="line"># $ NO_FAILFAST=true CHROME_VERSION=99.0.4844.74 ./test-protractor.sh e2e </span><br></pre></td></tr></table></figure></li>
+<li>运行以下指令+<code>chrome://inspect/#devices</code> 进行开发和调试：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NO_FAILFAST=true CHROME_VERSION=$&#123;你自己浏览器的chrome版本&#125; NO_HEADLESS=true ./test-protractor.sh $&#123;你的suite分组,例如secrets&#125; </span><br></pre></td></tr></table></figure></li>
+<li>本地自测通过后，加到e2e公共分组内（后续看流水线的更新是否更换分组）</li>
+</ol>
+<p><img src="/./images/test-ci.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=ue9a7d527&margin=%5Bobject%20Object%5D&originHeight=1788&originWidth=3564&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u05ff8ee6-06b3-4e32-8864-49121d1467e&title="><br><a name="X5vfp"></a></p>
+<h2 id="（五）开发人员开发调试流水线打包操作"><a href="#（五）开发人员开发调试流水线打包操作" class="headerlink" title="（五）开发人员开发调试流水线打包操作"></a>（五）开发人员开发调试流水线打包操作</h2><p><a name="uDXpT"></a></p>
+<h3 id="日常操作"><a href="#日常操作" class="headerlink" title="日常操作"></a>日常操作</h3><p>console分支和srcBranch分支需保持一致，且为master<br>若srcBranch为空，则与console分支保持一致<br><img src="/./images/cdp.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u32d5bbf4&margin=%5Bobject%20Object%5D&originHeight=705&originWidth=1280&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=ucd41f397-554f-4ab4-bb53-d972e19f70c&title="><br><a name="CQo1r"></a></p>
+<h3 id="开发者在静态插件中本地调试模块构建脚本"><a href="#开发者在静态插件中本地调试模块构建脚本" class="headerlink" title="开发者在静态插件中本地调试模块构建脚本"></a>开发者在静态插件中本地调试模块构建脚本</h3><p>本地调试可修改srcBrach及plugins参数，其中需调试多个组件时，plugins参数中使用英文逗号分隔，所调试的各插件分支需统一，确认参数无误后，执行.&#x2F;build-frontend.sh 会拉取相关插件并引入到项目中，请在frontend&#x2F;packages&#x2F;xxx-plugin目录中修改插件内容进行特性开发(xxx为静态插件名称)<br><img src="/./images/script-debug.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u6f9ad5f8&margin=%5Bobject%20Object%5D&originHeight=1354&originWidth=1834&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u475562ca-a68d-4117-848e-feb1c3e482e&title="><br><a name="EQ5mf"></a></p>
+<h2 id="（六）流水线的构建与维护"><a href="#（六）流水线的构建与维护" class="headerlink" title="（六）流水线的构建与维护"></a>（六）流水线的构建与维护</h2><p><img src="https://cdn.nlark.com/yuque/0/2022/png/174108/1656752109843-4347c885-5167-48e5-8b78-5bd7424d3bd6.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=uae9681ab&margin=%5Bobject%20Object%5D&originHeight=400&originWidth=1374&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=uc878b8f6-ac8d-43c2-9556-f4a09f33831&title="><br>有新的插件需要构建时，需添加参数配置：<br><img src="https://cdn.nlark.com/yuque/0/2022/png/174108/1656752109870-4cd75cdc-416c-4243-a9d4-861ce9ff611b.png#clientId=u655bdf44-240d-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u666c9489&margin=%5Bobject%20Object%5D&originHeight=731&originWidth=1510&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u174b5ecb-0395-4709-94f1-69845b90323&title="><br><a name="Ie4Hu"></a></p>
+<h2 id="（七）附件"><a href="#（七）附件" class="headerlink" title="（七）附件"></a>（七）附件</h2><h3 id="电子手册"><a href="#电子手册" class="headerlink" title="电子手册"></a>电子手册</h3><p>因内容会根据业务发展持续演进变化，为保证知识库的持续有效性，推荐大家优先关注规范、手册的电子版本，地址：<a target="_blank" rel="noopener" href="http://www.ccfe.cestc.cn/">www.ccfe.cestc.cn</a></p>
+<h3 id="CCOS架构控制台组件前端开发新手指引"><a href="#CCOS架构控制台组件前端开发新手指引" class="headerlink" title="CCOS架构控制台组件前端开发新手指引"></a>CCOS架构控制台组件前端开发新手指引</h3><p>《<a target="_blank" rel="noopener" href="https://c3yomn2yko.feishu.cn/docs/doccncnbHj9mVrjtBQ7AtROLDYd">CCOS架构控制台组件前端开发新手指引V1</a> 》 </p>
+<h3 id="CCOS前端模块开发准备工作"><a href="#CCOS前端模块开发准备工作" class="headerlink" title="CCOS前端模块开发准备工作"></a>CCOS前端模块开发准备工作</h3><p>《<a target="_blank" rel="noopener" href="https://code.cestc.cn/ccos/ccos-design/-/blob/master/operator%E8%AE%BE%E8%AE%A1/00-%E8%A7%84%E8%8C%83/%E5%89%8D%E7%AB%AF%E8%A7%84%E8%8C%83/CCOS%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95.md">CCOS前端模块开发准备工作</a> 》 </p>
+<h3 id="CCOS前端模块开发最佳实践"><a href="#CCOS前端模块开发最佳实践" class="headerlink" title="CCOS前端模块开发最佳实践"></a>CCOS前端模块开发最佳实践</h3><p>《<a target="_blank" rel="noopener" href="https://code.cestc.cn/ccos/ccos-design/-/blob/master/operator%E8%AE%BE%E8%AE%A1/00-%E8%A7%84%E8%8C%83/%E5%89%8D%E7%AB%AF%E8%A7%84%E8%8C%83/CCOS%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E4%B8%80%E4%B8%AA%E4%B8%9A%E5%8A%A1%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AA%E4%B8%9A%E5%8A%A1%E6%A8%A1%E5%9D%97-%E9%9D%99%E6%80%81%E6%8F%92%E4%BB%B6.md">从0开始开发一个前端模块组件</a>》</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/07/20/CCOS%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83V0.5.1/" data-id="cl5t0cxc40001ph0mhyplhkwy" data-title="" class="article-share-link">Teilen</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/07/20/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          测试图片显示
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/07/20/CCOS-Console%E7%BB%84%E4%BB%B6%E4%BB%A3%E7%A0%81%E5%90%88%E5%85%A5%E6%B5%81%E7%A8%8BV1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/07/20/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA/">测试图片显示</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/20/CCOS%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83V0.5.1/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/20/CCOS-Console%E7%BB%84%E4%BB%B6%E4%BB%A3%E7%A0%81%E5%90%88%E5%85%A5%E6%B5%81%E7%A8%8BV1/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/19/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 CCFE<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/08/09/ccfe-doc/2022/07/20/CCOS%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83V0.5.1/index/" data-id="cl6lxrjg1000hur5wfxhnbkec" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ccfe-doc/2022/07/19/hello-world/index" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/08/09/ccfe-doc/2022/07/19/hello-world/index/" class="article-date">
+  <time class="dt-published" datetime="2022-08-09T08:43:50.274Z" itemprop="datePublished">2022-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hello World | CCFE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="http://example.com/2022/07/19/hello-world/index.html">
+<meta property="og:site_name" content="CCFE">
+<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-07-19T12:58:48.204Z">
+<meta property="article:modified_time" content="2022-07-19T12:58:48.204Z">
+<meta property="article:author" content="CCFE">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="CCFE" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">CCFE</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/07/19/hello-world/" class="article-date">
+  <time class="dt-published" datetime="2022-07-19T12:58:48.204Z" itemprop="datePublished">2022-07-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Hello World
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/07/19/hello-world/" data-id="cl5t0cxc60002ph0m1dj55d5k" data-title="Hello World" class="article-share-link">Teilen</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/07/20/CCOS-Console%E7%BB%84%E4%BB%B6%E4%BB%A3%E7%A0%81%E5%90%88%E5%85%A5%E6%B5%81%E7%A8%8BV1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/07/20/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA/">测试图片显示</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/20/CCOS%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83V0.5.1/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/20/CCOS-Console%E7%BB%84%E4%BB%B6%E4%BB%A3%E7%A0%81%E5%90%88%E5%85%A5%E6%B5%81%E7%A8%8BV1/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/19/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 CCFE<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/08/09/ccfe-doc/2022/07/19/hello-world/index/" data-id="cl6lxrjfx000dur5wgmz13xw2" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-test2-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/08/09/test2-1/" class="article-date">
+  <time class="dt-published" datetime="2022-08-09T08:37:14.000Z" itemprop="datePublished">2022-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/08/09/test2-1/">test2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/08/09/test2-1/" data-id="cl6lxrjfs0003ur5wdw7hd72q" data-title="test2" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-test2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/08/09/test2/" class="article-date">
+  <time class="dt-published" datetime="2022-08-09T07:23:25.000Z" itemprop="datePublished">2022-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/08/09/test2/">test2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/08/09/test2/" data-id="cl6lxrjft0004ur5wdcx375kh" data-title="test2" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-test" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/08/09/test/" class="article-date">
+  <time class="dt-published" datetime="2022-08-09T06:27:44.000Z" itemprop="datePublished">2022-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/08/09/test/">test</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/08/09/test/" data-id="cl6lxrjfr0002ur5wawba2mwn" data-title="test" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-index" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/08/09/index/" class="article-date">
+  <time class="dt-published" datetime="2022-08-09T06:18:09.300Z" itemprop="datePublished">2022-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hello World | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="http://example.com/2022/08/09/hello-world/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-08-09T03:43:48.374Z">
+<meta property="article:modified_time" content="2022-08-09T03:43:48.374Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/08/09/hello-world/" class="article-date">
+  <time class="dt-published" datetime="2022-08-09T03:43:48.374Z" itemprop="datePublished">2022-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Hello World
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/08/09/hello-world/" data-id="cl6lsjxkd0000h05wcwtn1e7k" data-title="Hello World" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/08/09/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/08/09/index/" data-id="cl6lxrjfp0001ur5wekw37y62" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/08/09/hello-world/" class="article-date">
+  <time class="dt-published" datetime="2022-08-09T03:43:48.374Z" itemprop="datePublished">2022-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/08/09/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/08/09/hello-world/" data-id="cl6lxrjfl0000ur5weovod7y0" data-title="Hello World" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/08/09/ccfe-doc/js/script/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/09/ccfe-doc/index/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/09/ccfe-doc/js/jquery-3.4.1.min/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/09/ccfe-doc/fancybox/jquery.fancybox.min/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/09/ccfe-doc/fancybox/jquery.fancybox.min/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
